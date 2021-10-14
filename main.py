@@ -7,7 +7,6 @@ import numpy as np
 from PIL import Image
 from streamlit_drawable_canvas import st_canvas
 
-import matplotlib.pyplot as plt 
 
 
 # Specify canvas parameters in application
@@ -41,7 +40,7 @@ def inverse_furiour(image):
 def create_canvas_draw_instance(background_image, key, height, width): 
 
     canvas_result = st_canvas(
-        fill_color="rgba(255, 165, 0, 0.3)",  # Fixed fill color with some opacity
+        fill_color="rgba(255, 165, 0, 0)",  
         stroke_width=stroke_width,
         stroke_color=stroke_color,
         background_color=bg_color,
@@ -118,17 +117,23 @@ def main():
     
         fft_images, fft_images_log = rgb_fft(img)
 
+        for temp in fft_images_log:
+            st.text(temp.shape)
+
         names = ["bg_image_r.png", "bg_image_g.png", "bg_image_b.png"]
 
         write_background_images(fft_images_log, names)
 
+        st.text("Red Channel in frequency domain - ")
         canvas_r = create_canvas_draw_instance(names[0], key="red", height=img.shape[0], width=img.shape[1])
+        st.text("Green Channel in frequency domain - ")
         canvas_g = create_canvas_draw_instance(names[1], key="green",height=img.shape[0], width=img.shape[1])
+        st.text("Blue channel in frequency domain - ")
         canvas_b = create_canvas_draw_instance(names[2], key="blue", height=img.shape[0], width=img.shape[1])
         
         # st.text(type(canvas_r.image_data))
-        st.text(img.shape)
-        st.text(canvas_r.image_data.shape)
+        # st.text(img.shape)
+        # st.text(canvas_r.image_data.shape)
         # st.text(transformed_frequencies_3dim[0].shape)
 
 
@@ -159,6 +164,7 @@ def main():
             #                             result_clipped[2]])
 
             transformed_clipped = np.clip(transformed, 0, 255)
+            st.text("Image Returned by Inverse Fourier Transform - ")
             st.image(transformed_clipped, use_column_width=True)
 
 
