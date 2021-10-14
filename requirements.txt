@@ -2,6 +2,6 @@ numpy==1.21.2
 Pillow==8.3.2
 streamlit==1.0.0
 streamlit_drawable_canvas==0.8.0
-opencv-python
+opencv-python-headless
 opencv-contrib-python
 
