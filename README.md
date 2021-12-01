@@ -4,6 +4,7 @@ Streamlit app to visualise the effect of Fourier Transform in Image Processing
 You can check the Steramlit App deloyed on Heroku [here](https://fourier-transform-my-image.herokuapp.com/)
 
 
+- ### Demo Video
 [![Youtube Demo Video](https://img.youtube.com/vi/pf7Q8SdfXys/0.jpg)](https://www.youtube.com/watch?v=pf7Q8SdfXys)
 
 ## What is FOURIER TRANSFORM? 
